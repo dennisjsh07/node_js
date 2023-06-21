@@ -1,0 +1,30 @@
+
+
+// importing the http module....
+const http = require('http');
+
+// creating a request and returning a response....
+const server = http.createServer((req, res)=>{
+    console.log(req.url, req.method, req.headers);
+//  process.exit();
+res.setHeader('Content-Type','text/html');
+res.write('<html>');
+res.write('<head><title>My First respone</title></head>');
+res.write('<body>');
+if(req.url === '/home'){
+    res.write('<h1>Welcome home</h1>');
+}
+else if(req.url === '/about'){
+    res.write('<h1>Welcome about us page</h1>');
+}
+else{
+    res.write('<h1>Welcome to my Node js Project</h1>');
+}
+res.write('</body');
+res.write('/html');
+res.end();
+})
+
+server.listen(3000);
+
+
